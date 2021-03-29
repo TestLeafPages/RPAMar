@@ -1,0 +1,83 @@
+Need for RE FrameWork=====================
+
+1. Proper Exception Handling 
+2. Recovery Ability
+3. Effective Development 4. Reusability 
+5. Ease of Development / Maintainability
+
+Type of work flow:
+==================
+
+1.sequence2.flow chart 
+3.state Machine
+	
+
+RE FrameWork states:
+
+	1.TransactionItem	- DataRow, String and QueueItem
+	2.TransactionData	- Data Table
+	3.TransactionNumber	- int32(Page Number, Row index and item number)
+
+
+1. Init(Initialization) -> Pre condection 
+
+	Launch applications	Fetching data for processing(File, DB , queues and etc)
+	
+	Input: N/A
+	Output: Success		 -> Get Transcation Data
+		System Exception -> End process
+
+
+EX: InitAllApplications - > login Workflow , Invoke Nav Vendor and Invoke Scraping data workflow
+
+	
+2. Get Transcation Data (New DataRow form Datatable)
+			
+	fetch new data for processing 
+
+	Input: Init
+	Output: No Data		 	-> End Process
+		new Transaction data 	-> process transaction
+
+EX: Flow decisions 
+
+3. Process Transcation 
+	
+	- process the fetched data
+		1) Success, 2) Business Exception, 3) System Exception.
+
+	Input: Get transcation data	
+	Output: Get Transcation Data(Success, Business Exceptions) and Init		 	
+		new Transaction data (Sysytem Error)
+Ex:
+	Process Transcation state - > Process.xaml -> Invoke Nav Vendors workflow,Invoke Search TaxID workflow and Invoke Process Data Row .
+	
+4. End Process
+
+	End process and close all applications used.
+
+
+	Input: Initialization, Get Transcation data
+	Output: A/N
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
